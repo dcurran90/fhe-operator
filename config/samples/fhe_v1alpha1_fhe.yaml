@@ -1,0 +1,6 @@
+apiVersion: fhe.redhat.com/v1alpha1
+kind: FHE
+metadata:
+  name: fhe-sample
+spec:
+  # Add fields here

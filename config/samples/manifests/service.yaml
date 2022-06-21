@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: fhe-sample
+  name: fhe-sample
+spec:
+  ports:
+  - name: fhe-port
+    port: 8888
+    protocol: TCP
+    targetPort: 8888
+  selector:
+    app: fhe
+  type: NodePort
+status:
+  loadBalancer: {}

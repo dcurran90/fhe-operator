@@ -1,0 +1,4 @@
+## Append samples you want in your CSV to this file as resources ##
+resources:
+- fhe_v1alpha1_fhe.yaml
+#+kubebuilder:scaffold:manifestskustomizesamples

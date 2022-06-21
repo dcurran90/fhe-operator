@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: fhe
+  name: fhe
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fhe
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: fhe
+    spec:
+      # securityContext:
+      #   fsGroup: 2000
+      containers:
+      - image: quay.io/prometheus/busybox:latest
+        name: fhe-server
+        resources:
+          requests:
+            memory: "8Gi"
+          limits:
+            memory: "10Gi"
+        volumeMounts:
+        - name: fhe-config-vol
+          mountPath: /.config
+        - name: fhe-local-vol
+          mountPath: /.local
+      volumes:
+      - name: fhe-config-vol
+        persistentVolumeClaim:
+          claimName: fhe-sample-config
+      - name: fhe-local-vol
+        persistentVolumeClaim:
+          claimName: fhe-sample-local
+status: {}

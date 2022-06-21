@@ -1,0 +1,24 @@
+# permissions for end users to edit fhes.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: fhe-editor-role
+rules:
+- apiGroups:
+  - fhe.redhat.com
+  resources:
+  - fhes
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - fhe.redhat.com
+  resources:
+  - fhes/status
+  verbs:
+  - get

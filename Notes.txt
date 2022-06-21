@@ -1,0 +1,35 @@
+tBVgJ-VUNT7-M3TvG-fByIG
+
+
+oc run -it tester --image=centos:latest --command -- /bin/sh
+
+
+
+make install
+make run
+oc apply -f config/samples/fhe_v1alpha1_fhe.yaml
+
+
+
+3 Circuit 
+2 Precision 
+
+
+// https://projects.csail.mit.edu/HEWorkshop/HomomorphicEncryptionStandard2018.pdf
+// http://homomorphicencryption.org/wp-content/uploads/2018/11/HomomorphicEncryptionStandardv1.1.pdf
+
+  // Plaintext prime modulus
+  // Basically ASCII range. This is the 
+  unsigned long p = 127;
+
+
+  // Cyclotomic polynomial - defines phi(m)
+  unsigned long m = 128; // this will give 32 slots
+  // Hensel lifting (default = 1)
+  unsigned long r = 1;
+  // Number of bits of the modulus chain
+  unsigned long bits = 1000;
+  // Number of columns of Key-Switching matrix (default = 2 or 3)
+  unsigned long c = 2;
+  // Size of NTL thread pool (default =1)
+  unsigned long nthreads = 1;
